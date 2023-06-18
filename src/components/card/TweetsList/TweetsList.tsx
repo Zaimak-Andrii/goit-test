@@ -22,7 +22,7 @@ const TweetsList = ({ tweets }: Props) => {
           ))}
         </ul>
       ) : (
-        <h2>No tweets...</h2>
+        <h2 className={styles['no-items']}>No tweets...</h2>
       )}
     </>
   );

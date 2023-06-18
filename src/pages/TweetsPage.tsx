@@ -1,13 +1,14 @@
 import { Link, useLocation } from 'react-router-dom';
-import { RoutePath } from '@/constants/routes';
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { fetchTweets } from '@/store/tweets/tweets.thunk';
 import { selectFilter, selectFilteredTweets, selectIsLoading } from '@/store/tweets/tweets.selectors';
 import { FilterStatus, FilterStatuses } from '@/constants';
 import { changeTweetFilter, nextPage } from '@/store/tweets/tweets.slice';
-import TweetsList from '@/components/card/TweetsList/TweetsList';
+import TweetsList from '@/components/card/TweetsList';
 import { Button } from '@/components/common/buttons';
+import Loader from '@/components/common/Loader';
+import { RoutePath } from '@/constants/routes';
 
 const TweetsPage = () => {
   const location = useLocation();
@@ -29,7 +30,7 @@ const TweetsPage = () => {
     <section>
       <Link to={backPath}>&larr; Go Back</Link>
       {isLoading ? (
-        <h2>Loading...</h2>
+        <Loader />
       ) : (
         <>
           <select
