@@ -8,7 +8,7 @@ type Props = {
 const UsertAvatar = ({ src, alt }: Props) => {
   return (
     <div className={styles['avatar-container']}>
-      <img className={styles.avatar} src={src} alt={alt} />
+      <img className={styles.avatar} src={src} alt={alt} loading='lazy' />
     </div>
   );
 };

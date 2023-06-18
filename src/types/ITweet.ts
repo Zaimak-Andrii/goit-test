@@ -1,4 +1,4 @@
-export interface IUserCard {
+export interface ITweet {
   id: string;
   user: string;
   avatar: string;

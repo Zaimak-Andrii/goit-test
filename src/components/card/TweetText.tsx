@@ -6,8 +6,8 @@ type Props = {
   text: ReactNode;
 };
 
-const UserCardText = ({ count, text }: Props) => {
+const TweetText = ({ count, text }: Props) => {
   return <p className={styles.text}>{`${count.toLocaleString()} ${text}`}</p>;
 };
 
-export default UserCardText;
+export default TweetText;

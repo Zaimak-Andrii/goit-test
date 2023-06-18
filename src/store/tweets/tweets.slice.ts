@@ -1,14 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { IUserCard } from 'types/IUserCard';
+import { ITweet } from '@/types/ITweet';
 import { fetchTweets } from './tweets.thunk';
 import type { FilterStatus, RequestStatus } from '@/constants';
 
 interface IInitialState {
-  list: IUserCard[];
+  list: ITweet[];
   followed: string[];
   filter: FilterStatus;
+  pagination: {
+    page: number;
+    limit: number;
+  };
   status: RequestStatus;
   error: string | null;
 }
@@ -17,6 +21,10 @@ const initialState: IInitialState = {
   list: [],
   followed: [],
   filter: 'all',
+  pagination: {
+    page: 1,
+    limit: 3,
+  },
   status: 'idle',
   error: null,
 };
@@ -27,12 +35,16 @@ export const tweetsSlice = createSlice({
   reducers: {
     changeTweetFilter: (state, { payload }: { payload: FilterStatus }) => {
       state.filter = payload;
+      state.pagination.page = 1;
     },
     addToFollowed: (state, { payload }: { payload: string }) => {
       state.followed.push(payload);
     },
     removeFromFollowed: (state, { payload }: { payload: string }) => {
       state.followed = state.followed.filter((id) => id !== payload);
+    },
+    nextPage: (state) => {
+      state.pagination.page += 1;
     },
   },
   extraReducers(builder) {
@@ -52,7 +64,7 @@ export const tweetsSlice = createSlice({
   },
 });
 
-export const { changeTweetFilter, addToFollowed, removeFromFollowed } = tweetsSlice.actions;
+export const { changeTweetFilter, addToFollowed, removeFromFollowed, nextPage } = tweetsSlice.actions;
 
 const persistConfig = {
   key: 'tweets/followed',

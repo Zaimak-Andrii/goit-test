@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
-import Layout from './components/layouts/Layout';
-import { RoutePath } from './constants/routes';
+import Layout from 'components/layouts/Layout';
+import { RoutePath } from 'constants/routes';
 import './App.css';
 
 const MainPage = lazy(() => import('pages/MainPage'));

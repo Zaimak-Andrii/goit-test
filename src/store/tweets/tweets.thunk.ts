@@ -1,8 +1,8 @@
 import { getTweetsApi } from '@/api/tweets.api';
-import { IUserCard } from '@/types/IUserCard';
+import { ITweet } from '@/types/ITweet';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export const fetchTweets = createAsyncThunk<IUserCard[], undefined, { rejectValue: string }>(
+export const fetchTweets = createAsyncThunk<ITweet[], undefined, { rejectValue: string }>(
   'tweets/fetchTweets',
   async (_, { rejectWithValue }) => {
     try {
