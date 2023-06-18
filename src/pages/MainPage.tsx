@@ -1,15 +1,16 @@
+import { LinkButton } from '@/components/common/buttons';
 import { RoutePath } from '@/constants/routes';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const MainPage = () => {
   const location = useLocation();
   return (
-    <div>
-      MainPage
-      <Link to={RoutePath.TWEETS} state={{ from: location }}>
-        Tweets
-      </Link>
-    </div>
+    <section style={{ textAlign: 'center' }}>
+      <h1>Welcome to the home page of the GoIT test-task.</h1>
+      <LinkButton to={RoutePath.TWEETS} state={{ from: location }}>
+        Tweets &rarr;
+      </LinkButton>
+    </section>
   );
 };
 

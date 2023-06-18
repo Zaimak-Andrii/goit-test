@@ -6,6 +6,7 @@ export const selectTweets = (state: RootState) => state.tweets.list;
 export const selectFilter = (state: RootState) => state.tweets.filter;
 export const selectFollowed = (state: RootState) => state.tweets.followed;
 export const selectPagination = (state: RootState) => state.tweets.pagination;
+export const selectIsLoading = (state: RootState) => state.tweets.status === 'pending';
 
 export const selectFilteredTweets = createSelector(
   [selectTweets, selectFilter, selectFollowed, selectPagination],

@@ -1,9 +1,10 @@
 import { ITweet } from '@/types/ITweet';
 import styles from './styles.module.css';
 import TweetText from './TweetText';
-import UsertAvatar from './UsertAvatar';
+import UsertAvatar from './UserAvatar';
 import { useAppDispatch } from '@/hooks';
 import { addToFollowed, removeFromFollowed } from '@/store/tweets/tweets.slice';
+import { Button } from '../common/buttons';
 
 type Props = {
   info: ITweet;
@@ -26,13 +27,9 @@ const TweetCard = ({ info, isFollowed = false }: Props) => {
         <TweetText count={info.tweets} text='tweets' />
         <TweetText count={info.followers + (isFollowed ? 1 : 0)} text='followers' />
       </div>
-      <button
-        className={[styles.button, styles[`button--${isFollowed ? 'active' : 'normal'}`]].join(' ')}
-        type='button'
-        onClick={clickHandler}
-      >
+      <Button onClick={clickHandler} isActive={isFollowed}>
         {isFollowed ? 'Following' : 'Follow'}
-      </button>
+      </Button>
     </article>
   );
 };
