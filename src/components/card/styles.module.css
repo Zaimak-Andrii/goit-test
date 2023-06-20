@@ -1,5 +1,5 @@
 .container {
-  --logo-image: url(goit-logo.svg);
+  --logo-image: url(assets/goit-logo.svg);
   --background-image: url(assets/user-card-background-image.webp);
 
   width: 380px;

@@ -7,7 +7,7 @@ type Props = {
 };
 
 const TweetText = ({ count, text }: Props) => {
-  return <p className={styles.text}>{`${count.toLocaleString()} ${text}`}</p>;
+  return <p className={styles.text}>{`${count.toLocaleString('en-US')} ${text}`}</p>;
 };
 
 export default TweetText;
